@@ -15,7 +15,7 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="@47.101.146.77" uuid="41d2158e-d77e-41db-9c1f-4f4aa93253bc">
+    <data-source source="LOCAL" name="@47.101.146.77" uuid="91ad5870-f2c4-4010-861a-744e2a1d7d3f">
       <driver-ref>oracle</driver-ref>
       <synchronize>true</synchronize>
       <auto-commit>false</auto-commit>

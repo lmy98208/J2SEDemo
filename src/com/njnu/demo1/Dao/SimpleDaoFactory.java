@@ -11,9 +11,10 @@ public class SimpleDaoFactory {
         if(type.equals("mysql")){
             iCategoryDao=new MySqlCategoryDao();
         }else if(type.equals("oracle")){
-
-        }else {
             iCategoryDao=new OracleCategoryDao();
+        }else {
+
+
         }
         return iCategoryDao;
     }
