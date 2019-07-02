@@ -11,6 +11,9 @@ public class ReadProperties {
     public String dburl="";
     public String username="";
     public String pwd="";
+    public String driver="";
+    public String type="";
+
     private ReadProperties(){readFile();}
     public static ReadProperties getInstance(){
         if(readProperties==null){
@@ -25,6 +28,8 @@ public class ReadProperties {
             dburl=properties.getProperty("jdbc.url");
             username=properties.getProperty("jdbc.username");
             pwd=properties.getProperty("jdbc.password");
+            driver=properties.getProperty("jdbc.driver");
+            type=properties.getProperty("jdbc.type");
         }catch (Exception e){
             e.printStackTrace();
         }

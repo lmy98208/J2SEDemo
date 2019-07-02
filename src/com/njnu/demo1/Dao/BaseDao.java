@@ -1,6 +1,7 @@
 package com.njnu.demo1.Dao;
 
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,6 +25,8 @@ public class BaseDao {
      */
     private  Connection getConnection(){
         try{
+
+            Class.forName(properties.driver);
             connection= DriverManager.getConnection(properties.dburl,properties.username,properties.pwd);
         }catch (Exception e){
             e.printStackTrace();
@@ -107,9 +110,16 @@ public class BaseDao {
                     field.setAccessible(true);
                     //拿到列名
                     String fieldName=field.getName();
+                    //java数据类型与数据库数据类型映射
                     Object objValue=rs.getObject(fieldName);
-                    //属性setter（对应的对象，值）
-                    field.set(t,objValue);
+                    if(objValue instanceof BigDecimal)
+                    {
+                        BigDecimal bigDecimal=(BigDecimal)objValue;
+                        field.set(t, bigDecimal.intValue());
+                    }else {
+                        //属性setter（对应的对象，值）
+                        field.set(t, objValue);
+                    }
                 }
                 list.add(t);
             }
